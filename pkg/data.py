@@ -7,196 +7,196 @@ def members():
             'userid': 'xiaobaigou',
             'name': 'xiaobaigou',
             'mobile': '',
-            'department': '21000',
+            'department': ['21000', ],
             'email': 'xiaocai@ones.ai'
         },
         {
             'userid': 'xiaomin',
             'name': 'xiaomin',
             'mobile': '',
-            'department': '21000',
+            'department': ['21000', ],
             'email': ''
         },
         {
             'userid': 'huahua',
             'name': '花花',
             'mobile': '',
-            'department': '21001',
+            'department': ['21001', ],
             'email': 'huahua@ones.ai'
         },
         {
             'userid': 'dahua',
             'name': '大华',
             'mobile': '',
-            'department': '24001',
+            'department': ['24001', ],
             'email': 'dahua@ones.ai'
         },
         {
             'userid': 'xiaotong',
             'name': '晓彤',
             'mobile': '',
-            'department': '25000',
+            'department': ['25000', ],
             'email': 'xiaotong@ones.ai'
         },
         {
             'userid': 'wukong',
             'name': '齐天大圣',
             'mobile': '',
-            'department': '22000',
+            'department': ['22000', ],
             'email': 'wukong@ones.ai'
         },
         {
             'userid': 'zhubajie',
             'name': '猪八戒',
             'mobile': '',
-            'department': '22000',
+            'department': ['22000', ],
             'email': 'zhubajie@ones.ai'
         },
         {
             'userid': 'shawujing',
             'name': '沙悟净',
             'mobile': '',
-            'department': '22000',
+            'department': ['22000', ],
             'email': 'shawujing@ones.ai'
         },
         {
             'userid': 'xiaobailong',
             'name': '小白龙',
             'mobile': '',
-            'department': '22000',
+            'department': ['22000', ],
             'email': ''
         },
         {
             'userid': 'xiezhi',
             'name': '谢智',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'xiezhi+4@ones.ai'
         },
         {
             'userid': 'zhiheng',
             'name': '方志恒',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'enheng@ones.ai'
         },
         {
             'userid': 'liujing',
             'name': '刘晶',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'oho@ones.ai'
         },
         {
             'userid': 'moli',
             'name': '茉莉',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'momo@ones.ai'
         },
         {
             'userid': 'dejing',
             'name': '梁德金',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'dede@ones.ai'
         },
         {
             'userid': 'zhongli',
             'name': '林中莉',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'zhong@ones.ai'
         },
         {
             'userid': 'zhoujiahao',
             'name': '周佳浩',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'jiajia@ones.ai'
         },
         {
             'userid': 'liuxing',
             'name': '刘鑫',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'niuniu@ones.ai'
         },
         {
             'userid': 'yangdi',
             'name': '杨笛',
             'mobile': '',
-            'department': '24100',
+            'department': ['24100', ],
             'email': 'didi@ones.ai'
         },
         {
             'userid': 'tangsheng',
             'name': '唐僧',
             'mobile': '',
-            'department': '22000',
+            'department': ['22000', ],
             'email': 'tangsheng@ones.ai'
         },
         {
             'userid': 'yangyang',
             'name': '杨洋',
             'mobile': '',
-            'department': '22002',
+            'department': ['22002', ],
             'email': 'yang@ones.ai'
         },
         {
             'userid': 'xifan',
             'name': '稀饭',
             'mobile': '',
-            'department': '25003',
+            'department': ['25003', ],
             'email': 'xixi@ones.ai'
         },
         {
             'userid': 'yatang',
             'name': '雅堂',
             'mobile': '',
-            'department': '25003',
+            'department': ['25003', ],
             'email': 'yaya@ones.ai'
         },
         {
             'userid': 'weiye',
             'name': '伟业',
             'mobile': '',
-            'department': '25003',
+            'department': ['25003', ],
             'email': 'wei@ones.ai'
         },
         {
             'userid': 'huangmei',
             'name': '黄美',
             'mobile': '',
-            'department': '21004',
+            'department': ['21004', ],
             'email': 'meiyou@ones.ai'
         },
         {
             'userid': 'weixiaobao',
             'name': '韦小宝',
             'mobile': '',
-            'department': '21006',
+            'department': ['21006', ],
             'email': 'weixiaobao@ones.ai'
         },
         {
             'userid': 'anqila',
             'name': '安琪拉',
             'mobile': '',
-            'department': '21006',
+            'department': ['21006', ],
             'email': 'anqila@ones.ai'
         },
         {
             'userid': 'caiwenji',
             'name': '蔡文姬',
             'mobile': '',
-            'department': '21006',
+            'department': ['21006', ],
             'email': 'caiwenji@ones.ai'
         },
         {
             'userid': 'bilibili',
             'name': '对应LDAP的bilibili',
             'mobile': '13342543625',
-            'department': '21006',
+            'department': ['21006', ],
             'email': 'bilibili@ones.ai'
         }
     ]
@@ -392,7 +392,7 @@ class Member(UserDict):
     def _new_data(cls):
         return {
             'members': members(),
-            'department': department()
+            'departments': department()
         }
 
     def add_members(self, data: list, d_type: str = 'members'):
