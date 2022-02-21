@@ -400,7 +400,7 @@ class Member(UserDict):
         """
 
         curr = self.data.get(d_type)
-        curr_key = {'members': 'userid', 'department': 'id'}
+        curr_key = {'members': 'userid', 'departments': 'id'}
         match_key = curr_key.get(d_type)
 
         exist = [c[match_key] for c in curr]
@@ -413,7 +413,7 @@ class Member(UserDict):
         """
 
         curr = self.data.get(d_type)
-        curr_key = {'members': 'userid', 'department': 'id'}
+        curr_key = {'members': 'userid', 'departments': 'id'}
         match_key = curr_key.get(d_type)
         for d in data:
             for m in curr:
@@ -423,12 +423,16 @@ class Member(UserDict):
     def delete_org(self, uuids: list, d_type: str = 'members'):
         """"""
         curr = self.data.get(d_type)
-        curr_key = {'members': 'userid', 'department': 'id'}
+        curr_key = {'members': 'userid', 'departments': 'id'}
         match_key = curr_key.get(d_type)
-        for d in uuids:
-            for m in curr:
-                if d[match_key] == m[match_key]:
-                    m |= d
+
+        new_data = []
+
+        for m in curr:
+            if m[match_key] not in uuids:
+                new_data.append(m)
+
+        self.data[curr_key] = new_data
 
     def reset(self):
         """"""

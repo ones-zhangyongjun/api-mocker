@@ -28,6 +28,13 @@ async def update_org(item: ModifyItem):
     return response()
 
 
+@app.post('/api/update')
+async def update_org(item: ModifyItem):
+    """删除组织信息"""
+    org.delete_org(item.data, item.d_type)
+    return response()
+
+
 @app.post('/api/reset')
 async def reset_api():
     """重置组织信息"""
