@@ -24,5 +24,11 @@ class ModifyItem(BaseModel):
     data: List[dict] = []
 
 
+class DeleteItem(BaseModel):
+    """"""
+    d_type: str
+    uuids: List[str] = []
+
+
 def response(**kwargs):
     return RespItem(**kwargs)

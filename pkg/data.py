@@ -423,6 +423,7 @@ class Member(UserDict):
     def delete_org(self, uuids: list, d_type: str = 'members'):
         """"""
         curr = self.data.get(d_type)
+        print(f'uuids {uuids}')
         curr_key = {'members': 'userid', 'departments': 'id'}
         match_key = curr_key.get(d_type)
 
@@ -430,9 +431,10 @@ class Member(UserDict):
 
         for m in curr:
             if m[match_key] not in uuids:
+                print(m[match_key])
                 new_data.append(m)
 
-        self.data[curr_key] = new_data
+        self.data[d_type] = new_data
 
     def reset(self):
         """"""

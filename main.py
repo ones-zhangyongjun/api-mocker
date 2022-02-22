@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from pkg.data import Member
-from pkg.schema import ModifyItem, response
+from pkg.schema import ModifyItem, response, DeleteItem
 
 app = FastAPI()
 
@@ -28,10 +28,10 @@ async def update_org(item: ModifyItem):
     return response()
 
 
-@app.post('/api/update')
-async def update_org(item: ModifyItem):
+@app.post('/api/delete')
+async def update_org(item: DeleteItem):
     """删除组织信息"""
-    org.delete_org(item.data, item.d_type)
+    org.delete_org(item.uuids, item.d_type)
     return response()
 
 
