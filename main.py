@@ -15,7 +15,13 @@ async def members():
 
 
 @app.get("/api/sync/big")
-async def members():
+async def big_data():
+    """获取同步信息"""
+    return org.big_data()
+
+
+@app.get("/api/sync/big/stable")
+async def stable_big():
     """获取同步信息"""
     return org.stale_big_data()
 

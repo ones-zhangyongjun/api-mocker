@@ -448,9 +448,18 @@ class Member(UserDict):
     @classmethod
     def big_data(cls):
         """"""
+        depart = []
+
+        for d in range(1, 5001):
+            m = single_depart(d)
+            if d == 2000:
+                m.pop('parentid')
+
+            depart.append(m)
+
         b = {
             'members': [single_member() for _ in range(100000)],
-            'departments': [single_depart(d, d + 1) for d in range(5000)]
+            'departments': depart,
         }
 
         return b
@@ -460,7 +469,7 @@ class Member(UserDict):
         """"""
         _p = os.path
         abs_path = _p.abspath(_p.curdir)
-        c = _p.join(abs_path, 'pkg', 'responses.json')
+        c = _p.join(abs_path, 'pkg', 'response.json')
         print(c)
         with open(c, 'r') as f:
             m = f.read()
@@ -473,19 +482,19 @@ def single_member():
         'userid': name,
         'name': name,
         'mobile': '',
-        'department': [f'{random.randint(0, 5000)}', ],
+        'department': [f'{random.randint(10, 5000)}', ],
         'email': f'{name}@ones.ai'
     }
 
     return m
 
 
-def single_depart(index, order):
+def single_depart(index):
     d = {
-        'id': f'{index}',
-        'name': f'{ones_uuid()}',
-        'parentid': '0',
-        'order': order
+        'id': str(index).zfill(4),
+        'name': f'Depart-{ones_uuid().capitalize()}',
+        'parentid': '2000',  # 固定为2000
+        'order': index
     }
 
     return d
