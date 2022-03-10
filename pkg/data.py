@@ -1,3 +1,5 @@
+import json
+import os.path
 import random
 from collections import UserDict
 
@@ -452,6 +454,17 @@ class Member(UserDict):
         }
 
         return b
+
+    @classmethod
+    def stale_big_data(cls):
+        """"""
+        _p = os.path
+        abs_path = _p.abspath(_p.curdir)
+        c = _p.join(abs_path, 'pkg', 'responses.json')
+        print(c)
+        with open(c, 'r') as f:
+            m = f.read()
+            return json.loads(m)
 
 
 def single_member():

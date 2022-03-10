@@ -17,7 +17,7 @@ async def members():
 @app.get("/api/sync/big")
 async def members():
     """获取同步信息"""
-    return org.big_data()
+    return org.stale_big_data()
 
 
 @app.post('/api/add')
