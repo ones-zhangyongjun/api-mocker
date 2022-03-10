@@ -1,4 +1,7 @@
+import random
 from collections import UserDict
+
+from pkg.mocks import ones_uuid
 
 
 def members():
@@ -439,3 +442,37 @@ class Member(UserDict):
     def reset(self):
         """"""
         self.data = self._new_data()
+
+    @classmethod
+    def big_data(cls):
+        """"""
+        b = {
+            'members': [single_member() for _ in range(100000)],
+            'departments': [single_depart(d, d + 1) for d in range(5000)]
+        }
+
+        return b
+
+
+def single_member():
+    name = f'{ones_uuid().lower()}'
+    m = {
+        'userid': name,
+        'name': name,
+        'mobile': '',
+        'department': [f'{random.randint(0, 5000)}', ],
+        'email': f'{name}@ones.ai'
+    }
+
+    return m
+
+
+def single_depart(index, order):
+    d = {
+        'id': f'{index}',
+        'name': f'{ones_uuid()}',
+        'parentid': '0',
+        'order': order
+    }
+
+    return d

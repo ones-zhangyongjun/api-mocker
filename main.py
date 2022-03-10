@@ -14,6 +14,12 @@ async def members():
     return org.data
 
 
+@app.get("/api/sync/big")
+async def members():
+    """获取同步信息"""
+    return org.big_data()
+
+
 @app.post('/api/add')
 async def add_org(item: ModifyItem):
     """添加组织信息"""
