@@ -452,7 +452,7 @@ class Member(UserDict):
 
         for d in range(1, 5001):
             m = single_depart(d)
-            if d == 2000:
+            if d == 1:
                 m.pop('parentid')
 
             depart.append(m)
@@ -465,7 +465,7 @@ class Member(UserDict):
         return b
 
     @classmethod
-    def stale_big_data(cls):
+    def stale_big_data(cls, member, depart):
         """"""
         _p = os.path
         abs_path = _p.abspath(_p.curdir)
@@ -473,7 +473,15 @@ class Member(UserDict):
         print(c)
         with open(c, 'r') as f:
             m = f.read()
-            return json.loads(m)
+
+        all_data = json.loads(m)
+
+        b = {
+            'members': all_data['members'][:member],
+            'departments': all_data['departments'][:depart],
+        }
+
+        return b
 
 
 def single_member():
@@ -482,7 +490,7 @@ def single_member():
         'userid': name,
         'name': name,
         'mobile': '',
-        'department': [f'{random.randint(10, 5000)}', ],
+        'department': [f'{random.randint(2, 50)}'.zfill(4), ],  # 部门随机在50 个内
         'email': f'{name}@ones.ai'
     }
 
@@ -493,7 +501,7 @@ def single_depart(index):
     d = {
         'id': str(index).zfill(4),
         'name': f'Depart-{ones_uuid().capitalize()}',
-        'parentid': '2000',  # 固定为2000
+        'parentid': '0001',  # 固定为0001
         'order': index
     }
 
