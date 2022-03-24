@@ -5,6 +5,9 @@ from collections import UserDict
 
 from pkg.mocks import ones_uuid
 
+TOP_PID = (5 * n + 1 for n in range(10))
+RAD_CHOICES = [x for x in range(2, 50) if x not in TOP_PID]
+
 
 def members():
     return [
@@ -452,13 +455,11 @@ class Member(UserDict):
 
         for d in range(1, 5001):
             m = single_depart(d)
-            if d == 1:
-                m.pop('parentid')
 
             depart.append(m)
 
         b = {
-            'members': [single_member() for _ in range(100000)],
+            'members': [single_member() for _ in range(200000)],
             'departments': depart,
         }
 
@@ -490,19 +491,26 @@ def single_member():
         'userid': name,
         'name': name,
         'mobile': '',
-        'department': [f'{random.randint(2, 50)}'.zfill(4), ],  # 部门随机在50 个内
+        'department': [f'{random.choice(RAD_CHOICES)}'.zfill(4), ],  # 部门随机在50 个内
         'email': f'{name}@ones.ai'
     }
 
     return m
 
 
-def single_depart(index):
+def single_depart(index: int):
+    # index 50 以内，
     d = {
         'id': str(index).zfill(4),
         'name': f'Depart-{ones_uuid().capitalize()}',
-        'parentid': '0001',  # 固定为0001
+        # 'parentid': '0001',  # 固定为0001
         'order': index
     }
 
+    if index <= 50:
+        if index not in TOP_PID:
+            d['parentid'] = f'{(index // 5) * 5 + (index % 5) - 1}'.zfill(4)
+
+    else:
+        d['parentid'] = f'{random.choice(RAD_CHOICES)}'.zfill(4)  # 父级部门随机在 50 个内
     return d
