@@ -25,8 +25,8 @@ async def stable_big(member_no: int = 1000, depart_no: int = 100):
     """获取同步信息"""
     if depart_no < 50 or depart_no > 5000:
         return response(status=400, message='False', data='部门数量值 （50， 5000]！')
-    if member_no < 1 or member_no > 100000:
-        return response(status=400, message='False', data='成员数量值 （1， 100000]！')
+    if member_no < 1 or member_no > 500000:
+        return response(status=400, message='False', data='成员数量值 （1， 500000]！')
     return org.stale_big_data(member_no, depart_no)
 
 

@@ -459,7 +459,7 @@ class Member(UserDict):
             depart.append(m)
 
         b = {
-            'members': [single_member() for _ in range(200000)],
+            'members': [single_member() for _ in range(500000)],
             'departments': depart,
         }
 
